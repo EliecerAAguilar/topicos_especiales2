@@ -3,6 +3,20 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="C:\Users\Eliecer\Downloads\topicos especiales II tarea #1\Problema1\california_housing_test.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="C:\Users\Eliecer\Downloads\topicos especiales II tarea #1\Problema1\california_housing_train.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\venv\project-resources\euclid.csv">
           <value>
             <Attribute>
