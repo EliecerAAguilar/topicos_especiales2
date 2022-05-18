@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#creamos una lista con las opciones del menú
-opciones="Verificar Ensamblar Crear_GIF Salir"
 
 #esta función verifica el directorio, las imágenes y su tamaño
 function verificar {
@@ -26,9 +24,10 @@ function verificar {
 	fi
 }
 
+
 #esta función es la de ensamblar las imágenes con apngasm
 function ensamblar {
-	echo "Hola! Ahora trabajaremos desde APNG Assembler (apngasm)"
+	echo "APNG Assembler (apngasm)"
   #toma el resultado del directorio en la función anterior y lo verifica de la misma forma
 	if [[ -d $directorio ]]; then
 		echo "La ruta es: $directorio"
@@ -37,7 +36,7 @@ function ensamblar {
 		echo "Archivos.png"
     #imprimimos en consola solo los nombres de archivos y lo pasamos a una variable f
 		f=$(ls *.png)
-    #este for nos permite imprimir una sola vez todo los archivos
+    #este for nos permite imprimir una sola vez todos los archivos
 		for ((i=0; i<1; i++));
 		do
     #el echo $f, imprimirá los nombres de archivos en la ruta donde se muestran los archivos
@@ -45,7 +44,7 @@ function ensamblar {
 		done
 		echo "ingrese el nombre del archivo de salida"
 		read file_name
-		echo "ingrese el retraso o delay(ejm: se escribe 1 10 ,esto es 1/10 segundos = 0.1 segundos"
+		echo "ingrese el retraso o delay(ejm: se escribe 1 10 ,esto es 1/10 segundos = 0.1 segundos)"
 		read file_delay
 		echo "ingrese cantidad de ciclos a animar (cuantas veces se repetirá el gif)"
 		read file_frame
@@ -66,9 +65,11 @@ function ensamblar {
 		echo "Es una ruta...pero de un archivo"
 	fi
 }
+
+
 #función para crear un gif desde el .png creado con apng
 function crear_GIF {
-	echo "Hola! Ahora trabajaremos un gif (apng2gif)"
+	echo "convertir APNG a GIF"
   #toma el resultado del directorio en la función anterior y lo verifica de la misma forma
 	if [[ -d $directorio ]]; then
     #entramos a la ruta con el comando cd
@@ -96,9 +97,9 @@ function crear_GIF {
 		done
     #ingresamos los datos
 		echo "Seleccione de la lista el archivo a trabajar y escribalo en el siguiente campo"
-		echo "ingrese el nombre del archivo de entrada (sin el formato .png)"
+		echo "ingrese el nombre del archivo de entrada (sin la extension .png)"
 		read file_in_name
-		echo "ingrese el nombre del archivo de salida (sin formato)"
+		echo "ingrese el nombre del archivo de salida (sin extension)"
 		read file_out_name
     #creamos el gif a partir del .png hecho en con el apng
 		apng2gif $file_in_name.png $file_out_name.gif
@@ -110,8 +111,9 @@ function crear_GIF {
 }
 
 #Desde aquí empieza el menú
-echo "¡Bienvenido a Manejo de Archivos en BASH!"
-echo "Ahora, selecciona una opción de nuestro menu"
+#creamos una lista con las opciones del menú
+opciones="Verificar Ensamblar Crear_GIF Salir"
+echo "Selecciona una opción del menu"
 #invocamos la lista y la pasamos como opciones dentro de un select
 select opcion in $opciones;
 do
@@ -122,9 +124,9 @@ do
 	elif [ $opcion = "Crear_GIF" ]; then
 		crear_GIF
 	elif [ $opcion = "Salir" ]; then
-		echo "Bye!"
+		echo "saliendo!"
 		exit
 	else
-		echo "Opcion no válida!"
+		echo "Opcion no válida!\nVerifique las opciones disponibles!"
 	fi
 done
